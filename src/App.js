@@ -112,7 +112,7 @@ const App = () => {
     const dragEnd = () => {
         const squareBeingDraggedId = parseInt(squareBeingDragged.getAttribute('data-id'))
         const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'))
-
+        const originalColorArrangement = [...currentColorArrangement]
         currentColorArrangement[squareBeingReplacedId] = squareBeingDragged.getAttribute('src')
         currentColorArrangement[squareBeingDraggedId] = squareBeingReplaced.getAttribute('src')
 
@@ -136,6 +136,7 @@ const App = () => {
             setSquareBeingDragged(null)
             setSquareBeingReplaced(null)
         } else {
+            setCurrentColorArrangement([...originalColorArrangement])
             currentColorArrangement[squareBeingReplacedId] = squareBeingReplaced.getAttribute('src')
             currentColorArrangement[squareBeingDraggedId] = squareBeingDragged.getAttribute('src')
             setCurrentColorArrangement([...currentColorArrangement])
